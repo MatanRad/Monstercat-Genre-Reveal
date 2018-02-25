@@ -1,0 +1,15 @@
+{
+    "manifest_version" : 2,
+    "name" : "Monstercat Genre Reveal",
+    "description" : "Automatically adds the genre to the title of newer Monstercat videos.",
+    "version" : "1.0",
+    "icons": { "128": "icon128.png" },
+    "content_scripts": [
+        {
+          "matches": [
+            "https://www.youtube.com/watch?v=*"
+          ],
+          "js": ["content.js"]
+        }
+      ]
+}
