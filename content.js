@@ -27,7 +27,7 @@ function ResetGenre()
         setTimeout(function() { ResetGenre(); }, 250);
         return;
     }
-    var ourdata = document.getElementById("description").innerHTML;
+    var ourdata = document.getElementById("description").innerText;
 
     var ourres = ourdata.match(ourreg);
     if (ourres != null && ourres.length == 2)
