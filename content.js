@@ -1,23 +1,5 @@
 // Code by Matan Radomski, 2018.
-
-function TransitionStart()
-{
-    var prevtitle = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0].innerText;
-    TransitionCheck(prevtitle);
-}
-
-function TransitionCheck(prev)
-{
-    if (document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0].innerText==prev)
-    {
-        setTimeout(function() { TransitionCheck(prev); }, 250);
-    }
-    else
-    {
-        ResetGenre();
-    }
-    
-}
+console.log("Monstercat Genre Reveal Init");
 
 function ResetGenre()
 {
@@ -40,7 +22,14 @@ function ResetGenre()
     }
 }
 
-window.addEventListener("spfdone", TransitionStart); // old youtube design
-window.addEventListener("yt-navigate-start", TransitionStart); 
+document.addEventListener('transitionend',
+  function(event) {
+    if (event.propertyName === 'transform' && event.target.id === 'progress') {
+        ResetGenre();
+    }
+}, true);
+
+
+
 ResetGenre();
 
