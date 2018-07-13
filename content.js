@@ -3,6 +3,12 @@ console.log("Monstercat Genre Reveal Init");
 
 function ResetGenre()
 {
+    var genrespan = document.getElementById("monstercatgenre");
+    if (genrespan != null)
+    {
+        genrespan.parentNode.removeChild(genrespan);
+    }
+
     var ourreg = /Genre: *(.*)\n/;
     if(document.getElementById("description")==null)
     {
@@ -15,9 +21,14 @@ function ResetGenre()
     if (ourres != null && ourres.length == 2)
     {
         var ourgenre = ourres[1];
-        var ourtitle = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0];
-        ourtitle.innerText = "[" + ourgenre + "] - " + ourtitle.innerText;
+        if (ourgenre[0]=='#') ourgenre = ourgenre.substr(1)
 
+        var ourtitle = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0].children[0];
+
+        
+
+        ourtitle.innerHTML = "<span id='monstercatgenre'>"+ "[" + ourgenre + "] - " + ourtitle.innerHTML+"</span>";
+        genrespan = document.getElementById("monstercatgenre");
 
     }
 }
